@@ -11,6 +11,7 @@ public class Main {
         // initialize api process-wide
         ApiContextInitializer.init();
         StockPriceMonitorBot bot = new StockPriceMonitorBot();
+        bot.init();
         Thread botThread = new Thread(new BotThread(bot));
         botThread.start();
 

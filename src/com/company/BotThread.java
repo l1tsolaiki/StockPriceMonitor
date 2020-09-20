@@ -16,7 +16,6 @@ public class BotThread implements Runnable {
         TelegramBotsApi api = new TelegramBotsApi();
 
         try {
-            bot.init();
             api.registerBot(bot);
         } catch (TelegramApiRequestException e) {
             e.printStackTrace();
