@@ -9,7 +9,7 @@
         <module name="StockPriceMonitor" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="14">
       <module name="StockPriceMonitor" target="14" />
     </bytecodeTargetLevel>
   </component>

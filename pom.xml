@@ -7,18 +7,34 @@
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
+        <!-- telegram bot api  -->
         <dependency>
             <groupId>org.telegram</groupId>
             <artifactId>telegrambots</artifactId>
             <version>4.9</version>
         </dependency>
 
+        <!-- tinkoff openapi -->
         <dependency>
             <groupId>ru.tinkoff.invest</groupId>
             <artifactId>openapi-java-sdk-core</artifactId>
             <!--  <artifactId>openapi-java-sdk-java8</artifactId>-->
             <!--  <artifactId>openapi-java-sdk-example</artifactId>-->
             <version>0.4.1</version>
+        </dependency>
+
+        <!-- mysql jdbc -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.6</version>
+        </dependency>
+
+        <!-- telegram command bot -->
+        <dependency>
+            <groupId>org.telegram</groupId>
+            <artifactId>telegrambotsextensions</artifactId>
+            <version>4.4.0.2</version>
         </dependency>
     </dependencies>
 </project>
