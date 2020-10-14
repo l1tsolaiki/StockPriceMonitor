@@ -25,7 +25,11 @@ public class HelpCommand extends BotCommand{
         StringBuilder text = new StringBuilder();
         text.append("Usage:\n");
         for (IBotCommand command : this.commandRegistry.getRegisteredCommands()) {
-            text.append("/").append(command.getCommandIdentifier()).append(" - ").append(command.getDescription()).append("\n");
+            text.append("/")
+                .append(command.getCommandIdentifier())
+                .append(" - ")
+                .append(command.getDescription())
+                .append("\n");
         }
         SendMessage msg = new SendMessage()
                 .setChatId(chat.getId())

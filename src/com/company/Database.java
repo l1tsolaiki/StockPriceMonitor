@@ -7,8 +7,12 @@ import java.util.Properties;
 
 import java.sql.*;
 
+/**
+ * Singleton Database class to communicate with DB using JDBC
+ * @author l1tsolaiki
+ */
 public class Database {
-    Connection conn = null;
+    private Connection conn = null;
     private static volatile Database instance;
 
     private Database() {
