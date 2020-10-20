@@ -1,2 +1,4 @@
 config.properties
 JDBCTutorial.zip
+src/com/company/commands/TestCommand.java
+src/com/company/database/SQLRequests.java

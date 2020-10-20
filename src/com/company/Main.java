@@ -1,9 +1,8 @@
 package com.company;
 
+import com.company.bot.BotThread;
+import com.company.bot.StockPriceMonitorBot;
 import org.telegram.telegrambots.ApiContextInitializer;
-import org.telegram.telegrambots.meta.TelegramBotsApi;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 public class Main {
 

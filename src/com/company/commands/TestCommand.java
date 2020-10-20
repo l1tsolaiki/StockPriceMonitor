@@ -1,13 +1,13 @@
 package com.company.commands;
 
+import com.company.bot.MessagePassingProxy;
 import org.telegram.telegrambots.extensions.bots.commandbot.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.User;
 import org.telegram.telegrambots.meta.bots.AbsSender;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-public class TestCommand extends BotCommand {
+public class TestCommand extends BotCommand implements MessagePassingProxy {
     public TestCommand() {
         super("test", "to test");
     }
@@ -19,10 +19,6 @@ public class TestCommand extends BotCommand {
         if (cmd.equals("chatid")) {
             msg.setText(chat.getId().toString());
         }
-        try {
-            absSender.execute(msg);
-        } catch (TelegramApiException e) {
-            e.printStackTrace();
-        }
+        send(absSender, msg);
     }
 }

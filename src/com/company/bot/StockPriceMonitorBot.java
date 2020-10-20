@@ -1,22 +1,18 @@
-package com.company;
+package com.company.bot;
 
+import com.company.Config;
 import com.company.commands.HelpCommand;
 import com.company.commands.ListCommand;
 import com.company.commands.TestCommand;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
 
 /**
  * Main bot class
  * @author l1tsolaiki
  */
-public class StockPriceMonitorBot extends TelegramLongPollingCommandBot {
+public class StockPriceMonitorBot extends TelegramLongPollingCommandBot implements MessagePassingProxy {
     private String telegramBotToken = "";
 
     public StockPriceMonitorBot() {
@@ -26,13 +22,7 @@ public class StockPriceMonitorBot extends TelegramLongPollingCommandBot {
     }
 
     public void init() {
-        try (InputStream in = new FileInputStream("config.properties")) {
-            Properties prop = new Properties();
-            prop.load(in);
-            telegramBotToken = prop.getProperty("telegramBotToken");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+        telegramBotToken = Config.get("telegramBotToken");
     }
 
     @Override
@@ -42,16 +32,16 @@ public class StockPriceMonitorBot extends TelegramLongPollingCommandBot {
 
     @Override
     public void processNonCommandUpdate(Update update) {
+        logUser(
+                update.getMessage().getChat().getUserName(),
+                update.getMessage().getChatId().toString(),
+                update.getMessage().getChat().getFirstName() + ' ' + update.getMessage().getChat().getLastName()
+        );
         System.out.println(update.getMessage().getChatId());
         SendMessage msg = new SendMessage()
                 .setChatId(update.getMessage().getChatId())
                 .setText("Sorry, this is not a valid command!\nUse /help to see all available commands.");
-        try {
-            execute(msg);
-        } catch (TelegramApiException e) {
-            e.printStackTrace();
-        }
-
+        send(this, msg);
     }
 
     @Override
