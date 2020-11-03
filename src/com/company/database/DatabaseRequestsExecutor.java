@@ -9,7 +9,7 @@ import java.sql.*;
  * Class for executing SQL statements
  */
 public class DatabaseRequestsExecutor {
-    private DatabaseConnectionManager DBConnectionManager;
+    private final DatabaseConnectionManager DBConnectionManager;
     private static volatile DatabaseRequestsExecutor instance;
 
     private DatabaseRequestsExecutor() {
@@ -30,7 +30,7 @@ public class DatabaseRequestsExecutor {
     }
 
     public void logUser(String username, String chatID, String name) throws SQLException {
-        PreparedStatement preparedStatement = DBConnectionManager.getConnection().prepareStatement(SQLRequests.updateUserID);
+        PreparedStatement preparedStatement = DBConnectionManager.getConnection().prepareStatement(SQLRequests.UPDATE_USER_ID);
         preparedStatement.setString(1, username);
         preparedStatement.setString(2, chatID);
         preparedStatement.setString(3, name);
@@ -40,7 +40,7 @@ public class DatabaseRequestsExecutor {
     }
 
     public ResultSet querySubscriptions(String chatID) throws SQLException {
-        PreparedStatement preparedStatement = DBConnectionManager.getConnection().prepareStatement(SQLRequests.querySubscriptions);
+        PreparedStatement preparedStatement = DBConnectionManager.getConnection().prepareStatement(SQLRequests.QUERY_SUBSCRIPTIONS);
         preparedStatement.setString(1, chatID);
         return preparedStatement.executeQuery();
     }

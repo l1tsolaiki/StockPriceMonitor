@@ -1,6 +1,7 @@
 package com.company.database;
 
 import com.company.Config;
+import com.company.Constants;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -18,21 +19,18 @@ public class DatabaseConnectionManager {
     private final String DBName;
     private final String user;
     private final String password;
-    private static volatile DatabaseConnectionManager instance;
 
     public DatabaseConnectionManager() {
         DBName = Config.get("DBName");
         user = Config.get("user");
         password = Config.get("password");
-        // create connection
         connection = establishConnection(DBName, user, password);
     }
 
 
     private Connection establishConnection(String DBName, String user, String password) {
         try {
-            // get connection
-            connection = DriverManager.getConnection("jdbc:mysql://localhost/" + DBName + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Europe/Moscow", user, password);
+            connection = DriverManager.getConnection(Constants.DB_HOST + DBName + Constants.DB_PARAMS, user, password);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

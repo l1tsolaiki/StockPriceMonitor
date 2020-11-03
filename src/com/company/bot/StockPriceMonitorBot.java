@@ -1,6 +1,7 @@
 package com.company.bot;
 
 import com.company.Config;
+import com.company.Constants;
 import com.company.commands.HelpCommand;
 import com.company.commands.ListCommand;
 import com.company.commands.TestCommand;
@@ -27,7 +28,7 @@ public class StockPriceMonitorBot extends TelegramLongPollingCommandBot implemen
 
     @Override
     public String getBotUsername() {
-        return "StockPriceMonitor_bot";
+        return Constants.BOT_USERNAME;
     }
 
     @Override
@@ -40,7 +41,7 @@ public class StockPriceMonitorBot extends TelegramLongPollingCommandBot implemen
         System.out.println(update.getMessage().getChatId());
         SendMessage msg = new SendMessage()
                 .setChatId(update.getMessage().getChatId())
-                .setText("Sorry, this is not a valid command!\nUse /help to see all available commands.");
+                .setText(Constants.BOT_NON_COMMAND_RESPONSE);
         send(this, msg);
     }
 
