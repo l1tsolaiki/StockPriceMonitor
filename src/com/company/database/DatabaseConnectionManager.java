@@ -30,7 +30,7 @@ public class DatabaseConnectionManager {
 
     private Connection establishConnection(String DBName, String user, String password) {
         try {
-            connection = DriverManager.getConnection(Constants.DB_HOST + DBName + Constants.DB_PARAMS, user, password);
+            connection = DriverManager.getConnection(Constants.DB_HOST.concat(DBName).concat(Constants.DB_PARAMS), user, password);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -39,7 +39,6 @@ public class DatabaseConnectionManager {
 
     public Connection getConnection() {
         if (connection != null) {
-            // if connection exists
             return connection;
         }
         return establishConnection(DBName, user, password);
