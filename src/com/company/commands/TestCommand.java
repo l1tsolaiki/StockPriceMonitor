@@ -10,7 +10,8 @@ import org.telegram.telegrambots.meta.bots.AbsSender;
 import java.util.List;
 
 public class TestCommand extends BotCommand implements MessagePassingProxy {
-    private final List<String> adminGroup = List.of("l1tsolaiki")   ;
+    private final List<String> adminGroup = List.of("l1tsolaiki");
+
     public TestCommand() {
         super("test", "to test");
     }
