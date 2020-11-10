@@ -7,12 +7,11 @@ import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.User;
 import org.telegram.telegrambots.meta.bots.AbsSender;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 public class TestCommand extends BotCommand implements MessagePassingProxy {
-    private final ArrayList<String> adminGroup = new ArrayList<>(List.of("l1tsolaiki"));
+    private final List<String> adminGroup = List.of("l1tsolaiki");
+
     public TestCommand() {
         super("test", "to test");
     }

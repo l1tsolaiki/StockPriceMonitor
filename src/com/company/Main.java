@@ -13,20 +13,5 @@ public class Main {
         bot.init();
         Thread botThread = new Thread(new BotThread(bot));
         botThread.start();
-
-
-//        // initialize api
-//        ApiContextInitializer.init();
-//
-//        // create bots api
-//        TelegramBotsApi botsApi = new TelegramBotsApi();
-//
-//        try {
-//            StockPriceMonitorBot bot = new StockPriceMonitorBot();
-//            bot.init();
-//            botsApi.registerBot(bot);
-//        } catch (TelegramApiException e) {
-//            e.printStackTrace();
-//        }
     }
 }
